@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "516529278722",
+    "firebase_url": "https://evenu-d044f.firebaseio.com",
+    "project_id": "evenu-d044f",
+    "storage_bucket": "evenu-d044f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516529278722:android:8916afcc1a4931df",
+        "android_client_info": {
+          "package_name": "com.example.tonytea.evenu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516529278722-9mbkfacc88jfdmr0lurc4aksgnhpuo30.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIEBIzV8oKd67S8BclxN1rQbRRi624kTg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

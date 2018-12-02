@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Evenu</string>
+    <string name="prompt_email">Enter your email address</string>
+    <string name="prompt_password">Enter your password</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_register">Register</string>
+    <string name="prompt_username">Enter a username</string>
+    <string name="prompt_password_again">Enter your password again</string>
+    <string name="action_sign_up">SIGN UP!</string>
+    <string name="invalid_password_error">Password is invalid</string>
+    <string name="error_enter_email">Please enter your email address</string>
+    <string name="error_email_invalid">This email address is invalid</string>
+</resources>
