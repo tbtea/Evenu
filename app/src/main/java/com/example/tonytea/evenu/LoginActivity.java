@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.SearchEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
@@ -80,9 +81,9 @@ public class LoginActivity extends AppCompatActivity {
                     showErrorDialog("There was a problem signing in");
                 }
                 else{
-                    // Intent intent = new Intent (this, ChatActivity.class);
-                    // finish();
-                    // startActivity(intent);
+                     Intent intent = new Intent (LoginActivity.this, SearchEventActivity.class);
+                     finish();
+                     startActivity(intent);
                 }
             }
         });
