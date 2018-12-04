@@ -10,5 +10,11 @@
     <string name="invalid_password_error">Password is invalid</string>
     <string name="error_enter_email">Please enter your email address</string>
     <string name="error_email_invalid">This email address is invalid</string>
-    <string name="ceateAnEvent">Create an Event</string>
+    <string name="createAnEvent">Create an Event</string>
+    <string name="event_name">Event Name</string>
+    <string name="event_location">Event Location</string>
+    <string name="event_date">Date</string>
+    <string name="event_time">Event Time</string>
+    <string name="description">Description</string>
+    <string name="add_keywords">Add Keywords</string>
 </resources>
