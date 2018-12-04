@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                     showErrorDialog("There was a problem signing in");
                 }
                 else{
-                     Intent intent = new Intent (LoginActivity.this, SearchEventActivity.class);
+                     Intent intent = new Intent (LoginActivity.this, MainDisplayActivity.class);
                      finish();
                      startActivity(intent);
                 }
