@@ -10,4 +10,5 @@
     <string name="invalid_password_error">Password is invalid</string>
     <string name="error_enter_email">Please enter your email address</string>
     <string name="error_email_invalid">This email address is invalid</string>
+    <string name="ceateAnEvent">Create an Event</string>
 </resources>
