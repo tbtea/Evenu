@@ -17,4 +17,9 @@
     <string name="event_time">Event Time</string>
     <string name="description">Description</string>
     <string name="add_keywords">Add Keywords</string>
+    <string name="prompt_msg">Yala messages</string>
+    <string name="sample_message">Sample yala</string>
+    <string name="name">Name:</string>
+    <string name="location">Location:</string>
+    <string name="check">Check Details</string>
 </resources>

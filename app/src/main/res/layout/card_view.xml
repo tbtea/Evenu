@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="2"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:id="@+id/date"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:id="@+id/description"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:id="@+id/id"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:id="@+id/keywords"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:id="@+id/location"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:id="@+id/time"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:id="@+id/title"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/check_details"
+            android:visibility="invisible"
+            android:text="@string/check"
+            />
+
+
+    </LinearLayout>
+
+     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/profilePic"/>
+
+
+     </LinearLayout>
+
+</LinearLayout>

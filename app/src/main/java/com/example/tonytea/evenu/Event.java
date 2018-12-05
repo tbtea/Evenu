@@ -9,6 +9,7 @@ public class Event {
     private String eventDescription;
     private String eventKeywords;
     private String eventID;
+    // boolean permission?
 
     public Event(String name, String eventLocation, String eventDate, String eventTime, String eventDescription,
                  String eventKeywords, String eventID){

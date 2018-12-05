@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,7 +39,7 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
     // view points to the button
-    public void handleSavedData(View view){
+    public void createEventAttempt (View view){
 
         String eventTitle = mEventTitleView.getText().toString();
         String eventLocation = mEventLocation.getText().toString();
@@ -47,17 +48,46 @@ public class CreateEventActivity extends AppCompatActivity {
         String eventDescription = mDescription.getText().toString();
         String eventKeywords = mKeywords.getText().toString();
 
+        if(eventTitle.isEmpty()){
+            Toast.makeText(this, "Please enter an event name", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        else if(eventLocation.isEmpty()){
+            Toast.makeText(this, "Please enter an event location", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // Will randomly generate a unique key for each event
-        String id = databaseReference.child("events").push().getKey();
+        else if(eventDate.isEmpty()){
+            Toast.makeText(this, "Please enter a valid date", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        else if(eventTime.isEmpty()){
+            Toast.makeText(this, "Please enter a time", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        Event newEvent = new Event(eventTitle, eventLocation, eventDate,
-                                   eventTime, eventDescription, eventKeywords, id);
+        else if(eventDescription.isEmpty()){
+            Toast.makeText(this, "Please enter an event description", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        else if(eventKeywords.isEmpty()){
+            Toast.makeText(this, "Please enter an event keywords", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        databaseReference.child("events").child(id).setValue(newEvent);
+        else{
+
+            String id = databaseReference.child("events").push().getKey();
+
+            Event newEvent = new Event(eventTitle, eventLocation, eventDate,
+                    eventTime, eventDescription, eventKeywords, id);
+
+            databaseReference.child("events").child(id).setValue(newEvent);
+        }
+
 
     }
 
