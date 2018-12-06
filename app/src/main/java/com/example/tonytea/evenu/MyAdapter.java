@@ -33,12 +33,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int pos) {
-//        myViewHolder.date.setText(event_list.get(pos).getEventDate());
-//        myViewHolder.description.setText(event_list.get(pos).getEventDescription());
-//        myViewHolder.id.setText(event_list.get(pos).getEventID());
-//        myViewHolder.keywords.setText(event_list.get(pos).getEventKeywords());
-//        myViewHolder.location.setText(event_list.get(pos).getEventLocation());
-//        myViewHolder.time.setText(event_list.get(pos).getEventTime());
+        /*myViewHolder.date.setText(event_list.get(pos).getEventDate());
+        myViewHolder.description.setText(event_list.get(pos).getEventDescription());
+        myViewHolder.id.setText(event_list.get(pos).getEventID());
+        myViewHolder.keywords.setText(event_list.get(pos).getEventKeywords());
+        myViewHolder.location.setText(event_list.get(pos).getEventLocation());
+        myViewHolder.time.setText(event_list.get(pos).getEventTime());*/
         myViewHolder.title.setText(event_list.get(pos).getEventTitle());
 
         myViewHolder.carrier.setOnClickListener(new View.OnClickListener() {
