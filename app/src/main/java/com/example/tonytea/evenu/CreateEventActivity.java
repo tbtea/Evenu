@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 
 
 public class CreateEventActivity extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class CreateEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_event);
+        setContentView(R.layout.create_event_activity);
 
         mEventTitleView = (EditText) findViewById(R.id.event_title);
         mEventLocation = (EditText) findViewById(R.id.event_location);
@@ -33,7 +34,6 @@ public class CreateEventActivity extends AppCompatActivity {
         mTime = (EditText) findViewById(R.id.event_time);
         mDescription = (EditText) findViewById(R.id.event_description);
         mKeywords = (EditText) findViewById(R.id.event_keywords);
-
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
     }
@@ -49,46 +49,52 @@ public class CreateEventActivity extends AppCompatActivity {
         String eventKeywords = mKeywords.getText().toString();
 
         if(eventTitle.isEmpty()){
-            Toast.makeText(this, "Please enter an event_list name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a name.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         else if(eventLocation.isEmpty()){
-            Toast.makeText(this, "Please enter an event_list location", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a location.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         else if(eventDate.isEmpty()){
-            Toast.makeText(this, "Please enter a valid date", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a valid date.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         else if(eventTime.isEmpty()){
-            Toast.makeText(this, "Please enter a time", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a time.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         else if(eventDescription.isEmpty()){
-            Toast.makeText(this, "Please enter an event_list description", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a description.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         else if(eventKeywords.isEmpty()){
-            Toast.makeText(this, "Please enter an event_list keywords", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter at least one keyword.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         else{
-
             String id = databaseReference.child("events").push().getKey();
 
             Event newEvent = new Event(eventTitle, eventLocation, eventDate,
-                    eventTime, eventDescription, eventKeywords, id);
+                    eventTime, eventDescription, id, createKeywords(eventKeywords));
 
             databaseReference.child("events").child(id).setValue(newEvent);
         }
+    }
 
-
+    private ArrayList<String> createKeywords(String original){
+        String[] all = original.split(" ");
+        ArrayList<String> ks = new ArrayList<String>();
+        for(int i = 0; i<all.length; i++){
+            ks.add(all[i]);
+        }
+        return ks;
     }
 
 }

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +24,7 @@ public class MainDisplayActivity extends AppCompatActivity {
     DatabaseReference reference;
     RecyclerView mRecyclerView;
     ArrayList<Event> list;
-    MyAdapter adapter;
+    EventListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -48,8 +49,12 @@ public class MainDisplayActivity extends AppCompatActivity {
                     list.add(e);
                 }
 
-                adapter = new MyAdapter(MainDisplayActivity.this, list);
+                adapter = new EventListAdapter(MainDisplayActivity.this, list);
                 mRecyclerView.setAdapter(adapter);
+
+                AutoCompleteTextView editText = findViewById(R.id.search_text);
+                PeterHoyerAdapter adapter = new PeterHoyerAdapter(getApplicationContext(), list);
+                editText.setAdapter(adapter);
 
             }
 

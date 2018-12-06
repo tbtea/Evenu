@@ -13,13 +13,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyViewHolder> {
 
 
     Context context;
     ArrayList<Event> event_list;
 
-    public MyAdapter(Context c, ArrayList<Event> e)
+    public EventListAdapter(Context c, ArrayList<Event> e)
     {
         context = c;
         event_list = e;
@@ -28,7 +28,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.card_view, viewGroup, false ));
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.event_list_item, viewGroup, false ));
     }
 
     @Override

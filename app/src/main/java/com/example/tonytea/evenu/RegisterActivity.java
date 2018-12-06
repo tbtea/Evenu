@@ -20,8 +20,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.w3c.dom.Text;
-
 public class RegisterActivity extends AppCompatActivity {
 
     private AutoCompleteTextView mEmailView;
@@ -35,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register);
+        setContentView(R.layout.register_activity);
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.register_email);
         mUsernameView = (AutoCompleteTextView) findViewById(R.id.register_username);
