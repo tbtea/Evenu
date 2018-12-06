@@ -1,6 +1,8 @@
 package com.example.tonytea.evenu;
 
-public class Event {
+import java.io.Serializable;
+
+public class Event implements Serializable {
 
     private String eventTitle;
     private String eventLocation;
