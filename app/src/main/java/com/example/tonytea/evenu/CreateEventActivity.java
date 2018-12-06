@@ -49,12 +49,12 @@ public class CreateEventActivity extends AppCompatActivity {
         String eventKeywords = mKeywords.getText().toString();
 
         if(eventTitle.isEmpty()){
-            Toast.makeText(this, "Please enter an event name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter an event_list name", Toast.LENGTH_SHORT).show();
             return;
         }
 
         else if(eventLocation.isEmpty()){
-            Toast.makeText(this, "Please enter an event location", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter an event_list location", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -69,12 +69,12 @@ public class CreateEventActivity extends AppCompatActivity {
         }
 
         else if(eventDescription.isEmpty()){
-            Toast.makeText(this, "Please enter an event description", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter an event_list description", Toast.LENGTH_SHORT).show();
             return;
         }
 
         else if(eventKeywords.isEmpty()){
-            Toast.makeText(this, "Please enter an event keywords", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter an event_list keywords", Toast.LENGTH_SHORT).show();
             return;
         }
 

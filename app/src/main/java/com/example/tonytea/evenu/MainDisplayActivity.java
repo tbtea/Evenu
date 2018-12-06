@@ -36,6 +36,7 @@ public class MainDisplayActivity extends AppCompatActivity {
         //list = new ArrayList<Event>();
 
         reference = FirebaseDatabase.getInstance().getReference().child("events");
+
         reference.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -60,11 +61,12 @@ public class MainDisplayActivity extends AppCompatActivity {
     }
 
     // executes when create Event button is clicked
-   // public void createEvent(View v){
-     //   Intent intent = new Intent(this, CreateEventActivity.class);
-       // finish();
-        //startActivity(intent);
+    public void createEvent(View v){
+        Intent intent = new Intent(this, CreateEventActivity.class);
+        finish();
+        startActivity(intent);
 
-    //}
+    }
+
 
 }
