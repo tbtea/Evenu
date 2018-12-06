@@ -15,6 +15,18 @@
         android:layout_width="360dp"
         android:layout_height="260dp">
 
+        <TextView
+            android:id="@+id/even_u_mainpage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="111dp"
+            android:text="Even-U"
+            android:textColor="@color/blue"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="167dp"
@@ -25,7 +37,8 @@
             android:layout_marginStart="95dp"
             android:layout_marginLeft="95dp"
             android:layout_marginBottom="78dp"
-            app:srcCompat="@drawable/sens" />
+            app:srcCompat="@drawable/evenu_logo"
+            tools:srcCompat="@drawable/evenu_logo" />
     </RelativeLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -41,10 +54,11 @@
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
             android:maxLines="1"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textIsSelectable="false"
-            />
+            android:background="@drawable/round_edittext"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -63,32 +77,42 @@
             android:inputType="textPassword"
             android:maxLines="1"
             android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            android:textColorHint="@color/black"
+            android:background="@drawable/round_edittext"/>
 
     </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/login_register_button"
-        android:layout_width="356dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|left"
-        android:layout_marginTop="16dp"
-        android:background="@color/blue"
-        android:focusableInTouchMode="true"
-        android:onClick="registerUser"
-        android:text="@string/action_register"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/login_sign_in_button"
-        android:layout_width="359dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/blue"
-        android:onClick="signInUser"
-        android:text="@string/action_sign_in_short"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/login_sign_in_button"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="signInUser"
+
+            android:text="@string/action_sign_in_short"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background ="@drawable/round_button"/>
+
+        <Button
+            android:id="@+id/login_register_button"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
+            android:focusableInTouchMode="true"
+            android:onClick="registerUser"
+            android:text="@string/action_register"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background ="@drawable/round_button"/>
+
+    </LinearLayout>
 
 </LinearLayout>
