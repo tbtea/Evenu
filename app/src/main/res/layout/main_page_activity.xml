@@ -4,12 +4,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <AutoCompleteTextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/search_text"
-        android:layout_marginHorizontal="20dp"/>
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_24dp"
+            android:scaleY="1.5"
+            android:scaleX = "1.5"
+            android:layout_gravity="center_vertical"
+            android:padding="5dp"
+            />
+
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_text"
+            />
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
