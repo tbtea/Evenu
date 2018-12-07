@@ -40,7 +40,7 @@
     </RelativeLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
@@ -55,6 +55,7 @@
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:layout_marginBottom="10dp"
+            android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textIsSelectable="false"
@@ -63,7 +64,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
@@ -73,6 +74,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
             android:imeActionId="100"
+            android:padding="10dp"
             android:paddingHorizontal="5dp"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionUnspecified"
@@ -86,16 +88,17 @@
 
     <LinearLayout
         android:gravity="center_horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="40dp">
+        android:layout_gravity="center_horizontal"
+        >
 
         <Button
             android:id="@+id/login_sign_in_button"
-            android:layout_width="185dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:onClick="signInUser"
 
             android:text="@string/action_sign_in_short"
@@ -105,11 +108,9 @@
 
         <Button
             android:id="@+id/login_register_button"
-            android:layout_width="185dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-
-            android:focusableInTouchMode="true"
+            android:layout_marginTop="10dp"
             android:onClick="registerUser"
             android:text="@string/action_register"
             android:textColor="@color/white"
