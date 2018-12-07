@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.AdapterView;
@@ -12,6 +13,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,10 +25,13 @@ import java.util.ArrayList;
 public class MainDisplayActivity extends AppCompatActivity {
 
     private RecyclerView recycler_view;
-    private ArrayList<Event> all_events_list;
+    private ArrayList<Event> event_list_received = new ArrayList<>();
+    private ArrayList<Event> event_list_sorted = new ArrayList<>();
+    private ArrayList<String> user_keywords = new ArrayList<>();
     private EventListAdapter event_list_adapter;
     private ImageButton profile_button;
     private AutoCompleteTextView search_text;
+    private String this_user_id = FirebaseAuth.getInstance().getUid();
     private DatabaseReference base_database_reference = FirebaseDatabase.getInstance().getReference();
 
     @Override
@@ -34,6 +39,7 @@ public class MainDisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_activity);
         declareHandles();
+        getUserKeywords();
         setUpEventAdapter();
         setUpProfileListener();
     }
@@ -47,18 +53,37 @@ public class MainDisplayActivity extends AppCompatActivity {
         });
     }
 
+    private void getUserKeywords(){
+        base_database_reference.child("userkeywords").child(this_user_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+                    if(dataSnapshot1.exists()){
+                        user_keywords.add(dataSnapshot1.getKey());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     private void setUpEventAdapter(){
         recycler_view.setLayoutManager(new LinearLayoutManager(this));
         base_database_reference.child("events").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                all_events_list = new ArrayList<Event>();
-                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
-                {
+                event_list_received = new ArrayList<Event>();
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
                     Event e = dataSnapshot1.getValue(Event.class);
-                    all_events_list.add(e);
+                    event_list_received.add(e);
                 }
-                event_list_adapter = new EventListAdapter(MainDisplayActivity.this, all_events_list);
+                sortBasedOnKeywords();
+                event_list_adapter = new EventListAdapter(MainDisplayActivity.this, event_list_sorted);
+                //event_list_adapter = new EventListAdapter(MainDisplayActivity.this, event_list_received);
                 recycler_view.setAdapter(event_list_adapter);
                 setUpSearchSuggestions();
             }
@@ -71,7 +96,7 @@ public class MainDisplayActivity extends AppCompatActivity {
     }
 
     private void setUpSearchSuggestions() {
-        final PeterHoyerAdapter adapter = new PeterHoyerAdapter(getApplicationContext(), all_events_list);
+        final PeterHoyerAdapter adapter = new PeterHoyerAdapter(getApplicationContext(), event_list_received);
         search_text.setAdapter(adapter);
         search_text.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -87,9 +112,46 @@ public class MainDisplayActivity extends AppCompatActivity {
         search_text = findViewById(R.id.search_text);
     }
 
+    private void sortBasedOnKeywords(){
+        ArrayList<Integer> matches = new ArrayList<Integer>();
+
+        for(int a = 0; a<event_list_received.size(); a++){
+            matches.add(a, 0);
+        }
+
+        //get the number of matches for corresponding event, Eg. matches[1] = 2 means that events_received[1] shares two keywords with the user
+        for(int i = 0; i< event_list_received.size(); i++){
+            for(int j = 0; j<user_keywords.size(); j++){
+                if(event_list_received.get(i).getKeywords()!=null&&event_list_received.get(i).getKeywords().contains(user_keywords.get(j))){
+                    matches.set(i, matches.get(i)+1);
+                }
+            }
+        }
+
+
+        for(int k = 0; k<matches.size(); k++) {
+            Integer max = 0;
+            Integer pos = 0;
+            //go through the ints once and find the maximum
+            for(int l = 0; l<matches.size(); l++){
+                if(matches.get(l) >= max){
+                    max = matches.get(l);
+                    pos = l;
+                }
+            }
+            //use the position of the maximum to add the event at that position to the sorted list
+            event_list_sorted.add(event_list_received.get(pos));
+            matches.set(pos, -1); //void the current maximum
+            //Log.d("numbers", "pos: "+pos);
+        }
+
+        for(int b = 0; b<matches.size(); b++){
+            Log.d("limitation", Integer.toString(b)+": "+matches.get(b).toString());
+        }
+    }
+
     private void leaveForProfile(){
         Intent intent = new Intent(this, ProfileActivity.class);
-        finish();
         startActivity(intent);
     }
 
