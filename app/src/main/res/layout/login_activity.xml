@@ -30,8 +30,8 @@
             android:text="Even-U"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/evenu_logo"
-            android:textStyle="bold"
-            android:textSize="40sp"
+            android:fontFamily="@font/fasc"
+            android:textSize="55sp"
             android:textColor="@color/blue"
             />
 
