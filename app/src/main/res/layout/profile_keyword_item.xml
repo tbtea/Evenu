@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/round_edittext"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="5dp">
+
+    <TextView
+        android:id="@+id/profile_keyword_item_text"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textSize="20dp"
+        android:text="Keyword"
+        android:gravity="center_horizontal"
+        />
+
+</LinearLayout>
