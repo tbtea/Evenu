@@ -12,7 +12,10 @@ public class Comment {
         this.id = i;
     }
 
+<<<<<<< HEAD
     // no argument constructor
+=======
+>>>>>>> origin/master
     public Comment() {
     }
 

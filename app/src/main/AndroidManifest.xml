@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,11 +20,22 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".CreateEventActivity"></activity>
-        <activity android:name=".MainDisplayActivity"></activity>
-        <activity android:name=".EventDisplayActivity"></activity>
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".RegisterActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".CreateEventActivity"
+            android:parentActivityName=".MainDisplayActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".MainDisplayActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:noHistory="false"></activity>
+        <activity android:name=".EventDisplayActivity"
+            android:parentActivityName=".MainDisplayActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".ProfileActivity"
+            android:parentActivityName=".MainDisplayActivity"
+            android:screenOrientation="portrait"></activity>
 
 
     </application>
