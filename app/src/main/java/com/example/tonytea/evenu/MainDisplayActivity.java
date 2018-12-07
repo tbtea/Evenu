@@ -33,6 +33,7 @@ public class MainDisplayActivity extends AppCompatActivity {
     private AutoCompleteTextView search_text;
     private String this_user_id = FirebaseAuth.getInstance().getUid();
     private DatabaseReference base_database_reference = FirebaseDatabase.getInstance().getReference();
+    private ValueEventListener event_listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -40,7 +41,7 @@ public class MainDisplayActivity extends AppCompatActivity {
         setContentView(R.layout.main_page_activity);
         declareHandles();
         getUserKeywords();
-        setUpEventAdapter();
+        //setUpEventAdapter();
         setUpProfileListener();
     }
 
@@ -73,7 +74,7 @@ public class MainDisplayActivity extends AppCompatActivity {
 
     private void setUpEventAdapter(){
         recycler_view.setLayoutManager(new LinearLayoutManager(this));
-        base_database_reference.child("events").addValueEventListener(new ValueEventListener() {
+        event_listener =   new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 event_list_received = new ArrayList<Event>();
@@ -92,7 +93,10 @@ public class MainDisplayActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(MainDisplayActivity.this, "oops", Toast.LENGTH_SHORT).show();
             }
-        });
+        };
+        event_list_received.clear();
+        event_list_sorted.clear();
+        base_database_reference.child("events").addValueEventListener(event_listener);
     }
 
     private void setUpSearchSuggestions() {
@@ -165,6 +169,18 @@ public class MainDisplayActivity extends AppCompatActivity {
     public void createEvent(View v){
         Intent intent = new Intent(this, CreateEventActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        base_database_reference.child("events").removeEventListener(event_listener);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        setUpEventAdapter();
     }
 
 
