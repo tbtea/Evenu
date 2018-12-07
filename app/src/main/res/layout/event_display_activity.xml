@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
 
     <TextView
@@ -15,6 +17,7 @@
         android:textStyle="bold"
         android:textColor="@color/blue"
         android:fontFamily="@font/mymerriweather"
+        android:paddingTop="10dp"
         android:id="@+id/title"
         android:layout_marginTop="10dp" />
 
@@ -24,6 +27,8 @@
       android:layout_height="wrap_content"
       android:text="@string/name"
       android:textSize="15sp"
+       android:paddingLeft="5dp"
+       android:paddingTop="5dp"
       android:textStyle="bold"
       android:fontFamily="@font/mymerriweather"
       android:id="@+id/display_date"
@@ -37,6 +42,8 @@
       android:text="Event Description"
       android:textSize="15sp"
       android:textStyle="bold"
+      android:paddingLeft="5dp"
+      android:paddingTop="5dp"
       android:fontFamily="@font/mymerriweather"
       android:id="@+id/display_description"
       android:layout_below="@id/display_date"/>
@@ -48,6 +55,8 @@
       android:text="Display ID"
       android:textSize="15sp"
       android:textStyle="bold"
+      android:paddingLeft="5dp"
+      android:paddingTop="5dp"
       android:fontFamily="@font/mymerriweather"
       android:id="@+id/display_id"
       android:layout_below="@id/display_description"/>
@@ -59,6 +68,8 @@
         android:text="Location"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
         android:fontFamily="@font/mymerriweather"
         android:id="@+id/display_location"
         android:layout_below="@id/display_id"/>
@@ -71,6 +82,8 @@
         android:layout_height="wrap_content"
         android:text="Display Time"
         android:textSize="15sp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
         android:fontFamily="@font/mymerriweather"
         android:textStyle="bold"
         android:layout_below="@id/display_location"/>
@@ -82,6 +95,8 @@
       android:text="Associated keywords"
       android:textSize="15sp"
       android:textStyle="bold"
+      android:paddingLeft="5dp"
+      android:paddingTop="5dp"
       android:fontFamily="@font/mymerriweather"
       android:id="@+id/keywords"
       android:layout_below="@id/display_time"/>
@@ -90,7 +105,7 @@
     <ListView
         android:id="@+id/chat_list_view"
         android:layout_width="match_parent"
-        android:layout_height="245dp"
+        android:layout_height="345dp"
         android:layout_below="@id/keywords"
         android:layout_marginTop="15dp"
         android:divider="@null"
@@ -103,7 +118,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <EditText
             android:id="@+id/messageInput"
@@ -120,15 +137,14 @@
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginHorizontal="5dp"
             android:layout_marginVertical="8dp"
             android:layout_weight="1"
+            android:background="@drawable/transparent_button_background"
             android:scaleX="1.6"
             android:scaleY="1.6"
-            android:src="@drawable/ic_send_24dp"
-            android:background="@drawable/transparent_button_background"
-            android:layout_gravity="center_vertical"
-             />
+            android:src="@drawable/ic_send_24dp" />
     </LinearLayout>
 
 </RelativeLayout>

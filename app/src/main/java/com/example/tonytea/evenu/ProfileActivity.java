@@ -35,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference base_database_reference = FirebaseDatabase.getInstance().getReference();
     private TextView user_name;
     private TextView email;
-    private Button add_keyword_button;
+    private ImageButton add_keyword_button;
     private RecyclerView keyword_recycler;
     private KeywordAdapter keyword_adapter;
     private RecyclerView event_recycler_view;

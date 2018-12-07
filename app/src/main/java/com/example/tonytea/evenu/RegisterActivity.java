@@ -12,9 +12,11 @@ import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -33,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mPasswordView;
     private EditText mConfirmPasswordView;
     private FirebaseAuth mAuth;
+    private ImageView logo;
     private DatabaseReference base_database_reference = FirebaseDatabase.getInstance().getReference();
 
     protected void onCreate(Bundle savedInstanceState){
@@ -43,6 +46,11 @@ public class RegisterActivity extends AppCompatActivity {
         mUsernameView = (AutoCompleteTextView) findViewById(R.id.register_username);
         mPasswordView = (EditText) findViewById(R.id.register_password);
         mConfirmPasswordView = (EditText) findViewById(R.id.register_confirm_password);
+        logo = findViewById(R.id.register_logo);
+
+        Glide.with(getApplicationContext())
+                .load(getApplicationContext().getResources().getIdentifier("evenu_logo", "drawable", getApplicationContext().getPackageName()))
+                .into(logo);
 
         mConfirmPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -22,38 +23,54 @@
         android:layout_height="wrap_content"
         android:id="@+id/profile_email"
         android:gravity="center_horizontal"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:layout_below="@id/profile_user_name"/>
 
-    <LinearLayout
-        android:layout_width="200dp"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingTop="20dp">
+        android:text="Your Keywords:"
+        android:layout_below="@id/profile_email"
+        android:layout_margin="10dp"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/profile_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="200dp">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/profile_recycler_view"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/textView"
+        android:layout_centerHorizontal="true">
 
-        </android.support.v7.widget.RecyclerView>
+    </android.support.v7.widget.RecyclerView>
 
-        <Button
-            android:id="@+id/profile_add_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/round_button"
-            android:text="Add Keyword"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Events You're Hosting:"
+        android:layout_below="@id/profile_recycler_view"
+        android:layout_margin="10dp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/profile_event_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/textView1"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"/>
 
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/profile_add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_circle_black_24dp"
+        android:background="@drawable/transparent_button_background"
+        android:scaleX="3.0"
+        android:scaleY="3.0"
+        android:padding="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/profile_event_recycler"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="60dp"/>
+
+</RelativeLayout>

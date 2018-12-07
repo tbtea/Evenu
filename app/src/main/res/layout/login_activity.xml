@@ -14,14 +14,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="30dp">
+        android:layout_marginBottom="30dp">
 
         <ImageView
-            android:id="@+id/evenu_logo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:id="@+id/login_logo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/evenu_logo" />
+             />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
             android:id="@+id/even_u_mainpage"
             android:text="Even-U"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/evenu_logo"
+            android:layout_below="@id/login_logo"
             android:fontFamily="@font/fasc"
             android:textSize="55sp"
             android:textColor="@color/blue"
