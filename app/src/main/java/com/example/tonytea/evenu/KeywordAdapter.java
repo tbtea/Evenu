@@ -70,13 +70,11 @@ public class KeywordAdapter extends RecyclerView.Adapter<KeywordAdapter.KeywordH
     @NonNull
     @Override
     public KeywordHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        Toast.makeText(context, "creating", Toast.LENGTH_SHORT).show();
         return new KeywordHolder(LayoutInflater.from(context).inflate(R.layout.profile_keyword_item, viewGroup, false ));
     }
 
     @Override
     public void onBindViewHolder(@NonNull KeywordHolder keywordHolder, int i) {
-        Toast.makeText(context, "binding", Toast.LENGTH_LONG).show();
         keywordHolder.text.setText(keyword_list.get(i));
     }
 

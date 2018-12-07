@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,9 +35,13 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference base_database_reference = FirebaseDatabase.getInstance().getReference();
     private TextView user_name;
     private TextView email;
-    private ImageButton add_keyword_button;
+    private Button add_keyword_button;
     private RecyclerView keyword_recycler;
     private KeywordAdapter keyword_adapter;
+    private RecyclerView event_recycler_view;
+    private ArrayList<Event> event_list = new ArrayList<>();
+    private ValueEventListener event_listener;
+    private JalalAdapter event_list_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profile_activity);
         declareHandles();
         getThisUserData();
+        getThisUsersEvents();
         setUpButtonListener();
     }
 
@@ -51,6 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
         email = findViewById(R.id.profile_email);
         add_keyword_button = findViewById(R.id.profile_add_button);
         keyword_recycler = findViewById(R.id.profile_recycler_view);
+        event_recycler_view = findViewById(R.id.profile_event_recycler);
     }
 
     private void getThisUserData(){
@@ -69,6 +77,43 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void getThisUsersEvents(){
+        event_recycler_view.setLayoutManager(new LinearLayoutManager(this));
+        event_list_adapter = new JalalAdapter(getApplicationContext(), this_user_id);
+        event_recycler_view.setAdapter(event_list_adapter);
+
+//        event_listener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+//                    base_database_reference.child("events").child(dataSnapshot1.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                            if(dataSnapshot.exists()){
+//                                event_list.add(dataSnapshot.getValue(Event.class));
+//                                Log.d("tariq", "inside");
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                        }
+//                    });
+//
+//                }
+//                event_list_adapter = new JalalAdapter(getApplicationContext(), this_user_id);
+//                event_recycler_view.setAdapter(event_list_adapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                Toast.makeText(getApplicationContext(), "oops", Toast.LENGTH_SHORT).show();
+//            }
+//        };
+//        base_database_reference.child("userhostedevents").child(this_user_id).addValueEventListener(event_listener);
     }
 
     private void setUpButtonListener(){
@@ -125,5 +170,6 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onStop(){
         super.onStop();
         keyword_adapter.cleanup();
+        event_list_adapter.cleanup();
     }
 }

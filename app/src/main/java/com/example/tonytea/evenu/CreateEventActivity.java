@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,7 +24,8 @@ public class CreateEventActivity extends AppCompatActivity {
     private EditText mDescription;
     private EditText mKeywords;
 
-    public DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
+    private String this_user_id = FirebaseAuth.getInstance().getUid();
 
     protected void onCreate(Bundle savedInstanceState){
 
@@ -93,6 +95,8 @@ public class CreateEventActivity extends AppCompatActivity {
                     leave();
                 }
             });
+
+            databaseReference.child("userhostedevents").child(this_user_id).child(id).setValue(true);
         }
     }
 

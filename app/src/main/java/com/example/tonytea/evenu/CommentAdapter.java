@@ -20,11 +20,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ChatListAdapter extends BaseAdapter {
+public class CommentAdapter extends BaseAdapter {
 
     private Activity mActivity;
-    private DatabaseReference mDatabaseReference;
-    private  String mDisplayName;
+    private DatabaseReference base_database_reference = FirebaseDatabase.getInstance().getReference();
     private ArrayList<Comment> comment_list;
     private String this_event_id;
 
@@ -71,16 +70,11 @@ public class ChatListAdapter extends BaseAdapter {
         }
     };
 
-    public ChatListAdapter(Activity activity, DatabaseReference ref, String name, String id){
-
+    public CommentAdapter(Activity activity, DatabaseReference ref, String id){
         mActivity = activity;
-        mDisplayName = name;
         this_event_id = id;
-
-        FirebaseDatabase.getInstance().getReference().child("commentsections").child(id).addChildEventListener(mListener);
-
+        base_database_reference.child("commentsections").child(id).addChildEventListener(mListener);
         comment_list = new ArrayList<>();
-
     }
 
 
