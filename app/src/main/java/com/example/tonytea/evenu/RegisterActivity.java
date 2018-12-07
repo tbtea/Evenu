@@ -24,6 +24,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    static final String CHAT_PREFS = "ChatPrefs";
+    static final String DISPLAY_NAME_KEY = "username";
+
+
     private AutoCompleteTextView mEmailView;
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
@@ -136,8 +140,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void saveDisplayName() {
         String displayName = mUsernameView.getText().toString();
-        SharedPreferences prefs = getSharedPreferences("Chat prefs", 0);
-        prefs.edit().putString("username", displayName).apply();
+        SharedPreferences prefs = getSharedPreferences(CHAT_PREFS, 0);
+        prefs.edit().putString(DISPLAY_NAME_KEY, displayName).apply();
     }
 
 
