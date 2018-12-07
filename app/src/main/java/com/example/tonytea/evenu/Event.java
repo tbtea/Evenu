@@ -1,6 +1,7 @@
 package com.example.tonytea.evenu;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Event implements Serializable {
 
@@ -9,21 +10,19 @@ public class Event implements Serializable {
     private String eventDate;
     private String eventTime;
     private String eventDescription;
-    private String eventKeywords;
+    private ArrayList<String> keywords;
     private String eventID;
-    // boolean permission?
 
     public Event(){}
 
     public Event(String name, String eventLocation, String eventDate, String eventTime, String eventDescription,
-                 String eventKeywords, String eventID){
+                 String eventID, ArrayList<String> ks){
         this.eventTitle = name;
         this.eventLocation = eventLocation;
         this.eventDate = eventDate;
         this.eventTime = eventTime;
         this.eventDescription = eventDescription;
-        this.eventKeywords = eventKeywords;
-
+        this.keywords = new ArrayList<String>(ks);
         this.eventID = eventID;
     }
 
@@ -48,12 +47,16 @@ public class Event implements Serializable {
         return eventDescription;
     }
 
-    public String getEventKeywords() {
-        return eventKeywords;
-    }
-
     public String getEventID() {
         return eventID;
+    }
+
+    public ArrayList<String> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(ArrayList<String> keywords) {
+        this.keywords = keywords;
     }
 }
 

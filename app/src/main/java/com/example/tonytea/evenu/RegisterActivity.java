@@ -19,8 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import org.w3c.dom.Text;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -32,14 +32,12 @@ public class RegisterActivity extends AppCompatActivity {
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
     private EditText mConfirmPasswordView;
-
     private FirebaseAuth mAuth;
-
-
+    private DatabaseReference base_database_reference = FirebaseDatabase.getInstance().getReference();
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register);
+        setContentView(R.layout.register_activity);
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.register_email);
         mUsernameView = (AutoCompleteTextView) findViewById(R.id.register_username);
@@ -112,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void createFirebaseUser(){
 
         String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        final String password = mPasswordView.getText().toString();
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this,
                 new OnCompleteListener<AuthResult>() {
@@ -126,12 +124,18 @@ public class RegisterActivity extends AppCompatActivity {
                             showErrorDialog("Registration attempt failed");
                         } else {
                             saveDisplayName();
+                            createDatabaseUser(mAuth.getUid());
                             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                             finish();
                             startActivity(intent);
                         }
                     }
                 });
+    }
+
+    private void createDatabaseUser(String id){
+        User newUser = new User(id, mEmailView.getText().toString(), mUsernameView.getText().toString());
+        base_database_reference.child("users").child(id).setValue(newUser);
     }
 
     private void saveDisplayName() {
