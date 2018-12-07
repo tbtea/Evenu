@@ -1,11 +1,13 @@
 package com.example.tonytea.evenu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -84,8 +86,20 @@ public class CreateEventActivity extends AppCompatActivity {
             Event newEvent = new Event(eventTitle, eventLocation, eventDate,
                     eventTime, eventDescription, id, createKeywords(eventKeywords));
 
-            databaseReference.child("events").child(id).setValue(newEvent);
+            databaseReference.child("events").child(id).setValue(newEvent).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(getApplicationContext(), "Event successfully created", Toast.LENGTH_SHORT).show();
+                    leave();
+                }
+            });
         }
+    }
+
+    private void leave(){
+        Intent intent = new Intent(this, MainDisplayActivity.class);
+        finish();
+        startActivity(intent);
     }
 
     private ArrayList<String> createKeywords(String original){

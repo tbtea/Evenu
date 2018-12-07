@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/round_edittext"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="5dp">
+
+    <EditText
+        android:id="@+id/profile_keyword_item_text_editable"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textSize="30dp"
+        android:hint="Enter new Keyword"
+        />
+
+    <ImageButton
+        android:id="@+id/profile_keyword_item_check_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="5dp"
+        android:background="@drawable/transparent_button_background"
+        android:padding="5dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/ic_check_24dp" />
+
+</LinearLayout>

@@ -15,6 +15,7 @@ import java.util.List;
 
 public class PeterHoyerAdapter extends ArrayAdapter<Event> {
     private List<Event> fullList;
+    private List<Event> suggestions = new ArrayList<>();
 
     public PeterHoyerAdapter(@NonNull Context context, @NonNull List<Event> eventList){
         super(context, 0, eventList);
@@ -33,7 +34,6 @@ public class PeterHoyerAdapter extends ArrayAdapter<Event> {
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.event_autocomplete_row, parent, false);
         }
-
         TextView textViewName = convertView.findViewById(R.id.text_view_name);
 
         Event event = getItem(pos);
@@ -48,8 +48,8 @@ public class PeterHoyerAdapter extends ArrayAdapter<Event> {
     private Filter eventFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
+            suggestions = new ArrayList<>();
             FilterResults results = new FilterResults();
-            List<Event> suggestions = new ArrayList<>();
 
             if(constraint == null || constraint.length() == 0){
                 suggestions.addAll(fullList);
@@ -91,4 +91,8 @@ public class PeterHoyerAdapter extends ArrayAdapter<Event> {
             return ((Event) resultValue).getEventTitle();
         }
     };
+
+    public List<Event> getSuggestions() {
+        return suggestions;
+    }
 }
