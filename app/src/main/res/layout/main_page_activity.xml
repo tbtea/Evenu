@@ -7,40 +7,61 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_margin="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_search_24dp"
-            android:scaleY="1.5"
-            android:scaleX = "1.5"
-            android:layout_gravity="center_vertical"
             android:padding="5dp"
-            />
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@drawable/ic_search_24dp" />
 
 
         <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/search_text"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="376dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="72dp" />
 
-    <Button
-        android:id="@+id/create_event_button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="createEvent"
-        android:layout_margin="10dp"
-        android:text="@string/createAnEvent"
-        android:layout_gravity="center_horizontal"/>
+        android:paddingLeft="20dp"
+        android:paddingTop="80dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/create_event_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/button_transparent_background"
+            android:foregroundGravity="center_horizontal"
+            android:onClick="createEvent"
+            android:padding="10dp"
+            android:scaleX="2.0"
+            android:scaleY="2.0"
+            android:src="@drawable/ic_add_circle_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text=" Create Event"
+            android:textColor="@color/lightblue"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </LinearLayout>

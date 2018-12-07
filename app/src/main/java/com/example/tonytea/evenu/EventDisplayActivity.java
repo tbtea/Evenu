@@ -1,6 +1,7 @@
 package com.example.tonytea.evenu;
 
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -14,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class EventDisplayActivity extends AppCompatActivity {
+    Typeface myFont;
 
     Event this_event;
     private String mDisplayName;
@@ -28,6 +30,8 @@ public class EventDisplayActivity extends AppCompatActivity {
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_display_activity);
+
+
         this_event = (Event) getIntent().getSerializableExtra("event");
         date = findViewById(R.id.display_date);
         date.setText(this_event.getEventDate());
