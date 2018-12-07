@@ -9,114 +9,122 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/location"
-        android:textSize="15sp"
+        android:text="Title of event"
+        android:gravity="center"
+        android:textSize="25sp"
         android:textStyle="bold"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/mymerriweather"
         android:id="@+id/title"
+        android:layout_marginTop="10dp"
         android:onClick="displayEvent"/>
 
    <TextView
+      android:layout_marginTop="20sp"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="@string/name"
       android:textSize="15sp"
       android:textStyle="bold"
+      android:fontFamily="@font/mymerriweather"
       android:id="@+id/display_date"
       android:onClick="displayEvent"/>
 
 
   <TextView
+      android:layout_marginTop="5sp"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="@string/location"
+      android:text="Event Description"
       android:textSize="15sp"
       android:textStyle="bold"
+      android:fontFamily="@font/mymerriweather"
       android:id="@+id/display_description"/>
 
   <TextView
+      android:layout_marginTop="5sp"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="@string/location"
+      android:text="Display ID"
       android:textSize="15sp"
       android:textStyle="bold"
+      android:fontFamily="@font/mymerriweather"
       android:id="@+id/display_id"/>
 
-  <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="@string/location"
-      android:textSize="15sp"
-      android:textStyle="bold"
-      android:id="@+id/keywords"/>
-
-  <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="@string/location"
-      android:textSize="15sp"
-      android:textStyle="bold"
-      android:id="@+id/display_location"/>
+    <TextView
+        android:layout_marginTop="5sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/mymerriweather"
+        android:id="@+id/display_location"/>
 
 
     <TextView
+        android:layout_marginTop="5sp"
         android:id="@+id/display_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/location"
+        android:text="Display Time"
         android:textSize="15sp"
+        android:fontFamily="@font/mymerriweather"
         android:textStyle="bold" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:text="Going" />
+  <TextView
+      android:layout_marginTop="5sp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Associated keywords"
+      android:textSize="15sp"
+      android:textStyle="bold"
+      android:fontFamily="@font/mymerriweather"
+      android:id="@+id/keywords"/>
 
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="111dp"
-        android:layout_height="wrap_content"
-        android:text="Not going" />
 
     <ListView
         android:id="@+id/chat_list_view"
         android:layout_width="fill_parent"
-        android:layout_height="194dp"
+        android:layout_height="245dp"
         android:layout_above="@+id/listFooter"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
         android:divider="@null"
         android:dividerHeight="0dp"
-        android:transcriptMode="alwaysScroll" />
+        android:transcriptMode="alwaysScroll"
+        android:background="@drawable/customborder"/>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:id="@+id/listFooter"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:gravity="bottom">
+        android:gravity="bottom"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/messageInput"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:gravity="center_horizontal"
             android:hint="@string/prompt_msg"
             android:imeActionLabel="@string/action_send"
             android:imeOptions="actionUnspecified"
             android:inputType="textCapSentences|textAutoCorrect"
             android:maxLines="1"
-            android:gravity="center_horizontal"/>
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <ImageButton
             android:id="@+id/sendButton"
-            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_send"
-            android:contentDescription="@string/action_send"/>
+            android:contentDescription="@string/action_send"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_menu_send" />
     </LinearLayout>
 
 </LinearLayout>

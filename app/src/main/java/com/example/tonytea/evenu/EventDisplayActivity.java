@@ -3,6 +3,7 @@ package com.example.tonytea.evenu;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -10,8 +11,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class EventDisplayActivity extends AppCompatActivity {
@@ -31,6 +36,7 @@ public class EventDisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_display_activity);
 
+        setupDisplayName();
 
         this_event = (Event) getIntent().getSerializableExtra("event");
         date = findViewById(R.id.display_date);
@@ -67,21 +73,30 @@ public class EventDisplayActivity extends AppCompatActivity {
 
     private void setupDisplayName(){
 
-        SharedPreferences prefs = getSharedPreferences(RegisterActivity.CHAT_PREFS, MODE_PRIVATE);
+        FirebaseDatabase.getInstance().getReference().child("users").child("user_name").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    mDisplayName = dataSnapshot.getValue(String.class);
+                }else{
+                    mDisplayName = "Anonymous";
+                }
+            }
 
-        mDisplayName = prefs.getString(RegisterActivity.DISPLAY_NAME_KEY, null);
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        if (mDisplayName == null) mDisplayName = "Anonymous";
+            }
+        });
     }
 
     private void sendMessage(){
-        String input = mInputText.getText().toString();
+        final String input = mInputText.getText().toString();
         if(!input.equals("")){
-
-            String id = mDatabaseReference.child("comments").push().getKey();
+            String id = FirebaseDatabase.getInstance().getReference().child("comments").push().getKey();
             Comment chat = new Comment(input, mDisplayName, id);
-            mDatabaseReference.child("comments").child(id).setValue(chat);
-            mDatabaseReference.child("commentsections").child(this_event.getEventID()).child(id).setValue(true);
+            FirebaseDatabase.getInstance().getReference().child("comments").child(id).setValue(chat);
+            FirebaseDatabase.getInstance().getReference().child("commentsections").child(this_event.getEventID()).child(id).setValue(true);
             mInputText.setText("");
         }
 

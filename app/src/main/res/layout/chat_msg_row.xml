@@ -5,7 +5,8 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:id="@+id/singleMessageContainer"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/customborder">
 
     <TextView
         android:id="@+id/author"
