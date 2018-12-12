@@ -3,6 +3,7 @@ package com.example.tonytea.evenu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,8 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,9 +43,10 @@ public class MainDisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_activity);
         declareHandles();
-        getUserKeywords();
+        //getUserKeywords();
         //setUpEventAdapter();
         setUpProfileListener();
+        setUpLogo();
     }
 
     private void setUpProfileListener(){
@@ -52,6 +56,17 @@ public class MainDisplayActivity extends AppCompatActivity {
                 leaveForProfile();
             }
         });
+    }
+
+    private void setUpLogo(){
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.custom_action_bar);
+        View view = getSupportActionBar().getCustomView();
+        ImageView logo = view.findViewById(R.id.action_bar_logo);
+        Glide.with(getApplicationContext())
+                .load(getApplicationContext().getResources().getIdentifier("evenu_logo", "drawable", getApplicationContext().getPackageName()))
+                .into(logo);
     }
 
     private void getUserKeywords(){
@@ -180,6 +195,7 @@ public class MainDisplayActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
+        getUserKeywords();
         setUpEventAdapter();
     }
 

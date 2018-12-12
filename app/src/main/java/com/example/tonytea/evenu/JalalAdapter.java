@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -93,6 +94,18 @@ public class JalalAdapter extends RecyclerView.Adapter<JalalAdapter.HostedEventV
             }
         });
 
+        myViewHolder.delete.setVisibility(View.VISIBLE);
+        myViewHolder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                base_database_reference.child("userhostedevents").child(this_user_id).child(event_list.get(pos).getEventID()).removeValue();
+                base_database_reference.child("events").child(event_list.get(pos).getEventID()).removeValue();
+                base_database_reference.child("eventattendees").child(event_list.get(pos).getEventID()).removeValue();
+                event_list.remove(pos);
+                notifyDataSetChanged();
+            }
+        });
+
         // to get images do this
         // Picasso.get().load(events.get(position).getProfilePic()).into(holder.profilePic)
 
@@ -113,12 +126,13 @@ public class JalalAdapter extends RecyclerView.Adapter<JalalAdapter.HostedEventV
 
         TextView title;
         LinearLayout carrier;
-
+        ImageButton delete;
 
         public HostedEventViewHolder(@NonNull View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title);
             carrier = itemView.findViewById(R.id.carrier);
+            delete = itemView.findViewById(R.id.delete_event_button);
         }
     }
 

@@ -26,6 +26,7 @@
             android:parentActivityName=".MainDisplayActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".MainDisplayActivity"
+            android:theme="@style/MainTheme"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
             android:noHistory="false"></activity>

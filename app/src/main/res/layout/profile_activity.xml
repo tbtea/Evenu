@@ -59,18 +59,19 @@
         android:layout_gravity="center_horizontal"
         android:layout_centerHorizontal="true"/>
 
-    <ImageButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/profile_add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_circle_black_24dp"
-        android:background="@drawable/transparent_button_background"
-        android:scaleX="3.0"
-        android:scaleY="3.0"
         android:padding="15dp"
         android:layout_alignParentRight="true"
         android:layout_above="@id/profile_event_recycler"
         android:layout_marginBottom="60dp"
-        android:layout_marginRight="60dp"/>
+        android:layout_marginRight="60dp"
+        android:onClick="createEvent"
+        android:backgroundTint="#0000ff"
+        android:background="#0000ff"
+        app:fabSize="mini"
+        android:src="@drawable/ic_add_circle_black_24dp"/>
 
 </RelativeLayout>

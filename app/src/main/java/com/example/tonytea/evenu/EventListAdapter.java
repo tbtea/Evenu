@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.content.Context;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -68,6 +69,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
 
         TextView date, description, id, keywords,location, time, title;
         LinearLayout carrier;
+        ImageButton delete;
         //Button btn;
        // ImageView profilePic;
 
@@ -82,6 +84,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
 //            time = (TextView) itemView.findViewById(R.id.time);
             title = (TextView) itemView.findViewById(R.id.title);
             carrier = itemView.findViewById(R.id.carrier);
+            delete = itemView.findViewById(R.id.delete_event_button);
 
            // profilePic = (ImageView) itemView.findViewById(R.id.profilePic);
 

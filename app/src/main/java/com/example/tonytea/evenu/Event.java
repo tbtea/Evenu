@@ -12,11 +12,12 @@ public class Event implements Serializable {
     private String eventDescription;
     private ArrayList<String> keywords;
     private String eventID;
+    private String host_id;
 
     public Event(){}
 
     public Event(String name, String eventLocation, String eventDate, String eventTime, String eventDescription,
-                 String eventID, ArrayList<String> ks){
+                 String eventID, ArrayList<String> ks, String hid){
         this.eventTitle = name;
         this.eventLocation = eventLocation;
         this.eventDate = eventDate;
@@ -24,6 +25,7 @@ public class Event implements Serializable {
         this.eventDescription = eventDescription;
         this.keywords = new ArrayList<String>(ks);
         this.eventID = eventID;
+        this.host_id = hid;
     }
 
     public String getEventTitle(){
@@ -57,6 +59,14 @@ public class Event implements Serializable {
 
     public void setKeywords(ArrayList<String> keywords) {
         this.keywords = keywords;
+    }
+
+    public String getHost_id() {
+        return host_id;
+    }
+
+    public void setHost_id(String host_id) {
+        this.host_id = host_id;
     }
 }
 

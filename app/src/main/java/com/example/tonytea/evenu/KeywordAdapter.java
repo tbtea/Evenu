@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,9 +63,12 @@ public class KeywordAdapter extends RecyclerView.Adapter<KeywordAdapter.KeywordH
 
     class KeywordHolder extends RecyclerView.ViewHolder{
         private TextView text;
+        private ImageButton delete_button;
+
         public KeywordHolder(@NonNull View itemView) {
             super(itemView);
             text = itemView.findViewById(R.id.profile_keyword_item_text);
+            delete_button = itemView.findViewById(R.id.keyword_delete_button);
         }
     }
     @NonNull
@@ -74,8 +78,17 @@ public class KeywordAdapter extends RecyclerView.Adapter<KeywordAdapter.KeywordH
     }
 
     @Override
-    public void onBindViewHolder(@NonNull KeywordHolder keywordHolder, int i) {
+    public void onBindViewHolder(@NonNull final KeywordHolder keywordHolder, final int i) {
         keywordHolder.text.setText(keyword_list.get(i));
+
+        keywordHolder.delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                base_database_reference.child("userkeywords").child(this_user_id).child(keyword_list.get(i)).removeValue();
+                keyword_list.remove(i);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override

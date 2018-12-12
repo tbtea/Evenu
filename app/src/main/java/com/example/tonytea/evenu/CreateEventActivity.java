@@ -86,7 +86,7 @@ public class CreateEventActivity extends AppCompatActivity {
             String id = databaseReference.child("events").push().getKey();
 
             Event newEvent = new Event(eventTitle, eventLocation, eventDate,
-                    eventTime, eventDescription, id, createKeywords(eventKeywords));
+                    eventTime, eventDescription, id, createKeywords(eventKeywords), this_user_id);
 
             databaseReference.child("events").child(id).setValue(newEvent).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
